@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset=utf-8>
+
+<script>
+
+    // 現在地取得処理
+    function getPosition() {
+      // 現在地を取得
+      navigator.geolocation.getCurrentPosition(
+        // 取得成功した場合
+        function(position) {
+            window.location.href = "/shops/search_location?latitude="+position.coords.latitude+"&longitude="+position.coords.longitude
+            // $.ajax({
+            //   url: "/shops/search_location",
+            //   type: "GET",
+            //   dataType: 'html',
+            //   data: {latitude : position.coords.latitude,
+            //         longitude : position.coords.longitude},
+            // });
+        },
+        // 取得失敗した場合
+        function(error) {
+          switch(error.code) {
+            case 1: //PERMISSION_DENIED
+              alert("位置情報の利用が許可されていません");
+              break;
+            case 2: //POSITION_UNAVAILABLE
+              alert("現在位置が取得できませんでした");
+              break;
+            case 3: //TIMEOUT
+              alert("タイムアウトになりました");
+              break;
+            default:
+              alert("その他のエラー(エラーコード:"+error.code+")");
+              break;
+          }
+        }
+      );
+    }
+  </script>
+
+
+<title>Geolocation APIサンプル</title>
+</head>
+<body>
+<p>あなたの現在位置</p>
+<button onclick="getPosition();">Find!!</button>
+<div id="show_result"></div>
+
+
+<p><%= @lon.nil? %></p>
+<p><%= @lon %></p>
+<p><%= @rests[0]["name"] %></p>
+</body> 
+</html> 
