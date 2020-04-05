@@ -1,1 +1,10 @@
-<%= @rests[0]["name"] %>
+
+
+<% @rests.each do |rest|%>
+  <%= rest["name"] %>
+  <%= rest["address"] %>  
+  <%= rest["image_url"]["shop_image1"] %>
+  <%= rest["access"]["line"] %>
+
+  <%# <%= image_tag "#"%>
+<% end %>

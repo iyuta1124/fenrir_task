@@ -21,6 +21,7 @@ class ShopsController < ApplicationController
     json = Net::HTTP.get(uri)
     result = JSON.parse(json)
     @rests=result['rest']
+
 end
 # ログオブジェクト生成
 
