@@ -15,13 +15,11 @@ class ShopsController < ApplicationController
   def search_location
     latitude = params[:latitude]
     longitude = params[:longitude]
-
     par = URI.encode_www_form({keyid:'4b1b65087cb2dbd19aefe508804860d6',latitude:latitude,longitude: longitude, range:5})
     uri = URI.parse("https://api.gnavi.co.jp/RestSearchAPI/v3/?#{par}")
     json = Net::HTTP.get(uri)
     result = JSON.parse(json)
     @rests=result['rest']
-
 end
 # ログオブジェクト生成
 

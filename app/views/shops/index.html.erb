@@ -1,10 +1,17 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset=utf-8>
+<div class="index-wrapper">
+  <div class="container">
+    <div class="panel-headding">
+      <h1>現在地取得ツール</h1>
+    </div>
+    <div class="panel-body">
+      <button class="btn btn-primary" onclick="getPosition();">現在地からkmの店取得</button>
+    </div>
+  </div>
+</div>
+  
+
 
 <script>
-
     // 現在地取得処理
     function getPosition() {
       // 現在地を取得
@@ -40,13 +47,3 @@
       );
     }
   </script>
-
-
-<title>Geolocation APIサンプル</title>
-</head>
-<body>
-<p>あなたの現在位置</p>
-<button onclick="getPosition();">現在地からkmの店取得</button>
-<div id="show_result"></div>
-</body> 
-</html> 
