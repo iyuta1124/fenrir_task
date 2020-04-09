@@ -6,6 +6,7 @@
     <div class="panel-body row">
       <button class="btn btn-primary col-md-4 col-md-offset-4" onclick="getPosition();">現在地からkmの店取得</button>
     </div>
+    <% if @rests %>
     <% @rests.each do |rest|%>
       <div class="search-result row">
         <div class="rest-image col-md-3">
@@ -20,11 +21,13 @@
           <% rest["access"].each do |ac| %>
             <p><%= ac[1] %><p>
           <% end%>
-          <%= link_to '詳細を見る', shops_show_path(:rest_id => rest["id"]) %>
+          <%= link_to '詳細を見る', shops_show_path(rest_id: rest["id"]) %>
         </div>
       </div>
     <% end %>
-          
+    <% else %>    
+      <p>検索結果がありません。</p>
+    <% end %>  
 
   </div>
 </div>
