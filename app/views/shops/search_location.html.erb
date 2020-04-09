@@ -13,16 +13,18 @@
         </div>
         <div class="rest-item col-md-9 row">
           <p class="text-left"><%= rest["name"] %></p>
+          <p><%= rest["id"] %></p>
           <p><%= rest["address"] %></p>
-          <p><%= rest["opentime"]%></p>
           <p><%= rest["opentime"]%></p>
           <p><%= rest["holiday"]%></p>
           <% rest["access"].each do |ac| %>
             <p><%= ac[1] %><p>
           <% end%>
+          <%= link_to '詳細を見る', shops_show_path(:rest_id => rest["id"]) %>
         </div>
       </div>
     <% end %>
+          
 
   </div>
 </div>

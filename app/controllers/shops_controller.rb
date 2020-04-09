@@ -7,20 +7,29 @@ class ShopsController < ApplicationController
 
   def create
     @shop = Shop.new(shop_params)
-    @shop.address = @shop.prefecture + @shop.address_city
-    @shop.address = @shop.address.gsub(/\d+/, "").gsub(/\-+/, "")
+    # @shop.address = @shop.prefecture + @shop.address_city
+    # @shop.address = @shop.address.gsub(/\d+/, "").gsub(/\-+/, "")
     @shop.save
   end
 
   def search_location
-    latitude = params[:latitude]
-    longitude = params[:longitude]
-    par = URI.encode_www_form({keyid:'4b1b65087cb2dbd19aefe508804860d6',latitude:latitude,longitude: longitude, range:5})
+    @latitude = params[:latitude]
+    @longitude = params[:longitude]
+    par = URI.encode_www_form({keyid:'4b1b65087cb2dbd19aefe508804860d6',latitude:@latitude,longitude: @longitude, range:5})
     uri = URI.parse("https://api.gnavi.co.jp/RestSearchAPI/v3/?#{par}")
     json = Net::HTTP.get(uri)
     result = JSON.parse(json)
-    @rests=result['rest']
-end
+    @rests = result['rest']
+  end
+
+  def show
+    @rest_id = params[:rest_id]
+    par = URI.encode_www_form({keyid:'4b1b65087cb2dbd19aefe508804860d6',id: @rest_id})
+    uri = URI.parse("https://api.gnavi.co.jp/RestSearchAPI/v3/?#{par}")
+    json = Net::HTTP.get(uri)
+    result = JSON.parse(json)
+    @rests = result['rest']
+  end
 # ログオブジェクト生成
 
 # begin
@@ -51,17 +60,6 @@ end
 #   logger.error(e.message)
 # end
   def index
-    latitude = params[:latitude]
-    longitude = params[:longitude]
-    # ログ取得
-    # logger = Logger.new('./webapi.log')
-    # uriをいい感じに渡してくれるやつ
-    par = URI.encode_www_form({keyid:'4b1b65087cb2dbd19aefe508804860d6',name:'store',hit_per_page:2})
-    #uriにデータ取得サイト代入
-    uri = URI.parse("https://api.gnavi.co.jp/RestSearchAPI/v3/?#{par}")
-    json = Net::HTTP.get(uri)
-    result = JSON.parse(json)
-    @rests=result['rest']
     # ショップの名前
     # puts @rests[0]["name"]
     # イメージ画像
