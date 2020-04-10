@@ -1,2 +1,24 @@
-<h1>しょうぺーじ</h1>
-<%= @rests %>
+<% if @rests %>
+      <% @rests.each do |rest|%>
+        <div class="search-result row">
+          <div class="rest-image col-md-3">
+            <%= image_tag rest["image_url"]["shop_image1"],:size => '200x200' %>
+          </div>
+          <div class="rest-item col-md-9 row">
+            <p><%= rest["name"] %></p>
+            <p><%= rest["id"] %></p>
+            <p><%= rest["address"] %></p>
+            <p><%= rest["opentime"]%></p>
+            <p><%= rest["holiday"]%></p>
+            <% rest["access"].each do |ac| %>
+              <p><%= ac[1] %><p>
+            <% end%>
+            <%= link_to '詳細を見る', shops_show_path(rest_id: rest["id"]) %>
+          </div>
+        </div>
+      <% end %>
+    <% else %> 
+      <div class="serch-result">
+        <p>検索結果がありません。</p>
+      </div>
+    <% end %>
