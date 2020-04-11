@@ -17,8 +17,49 @@
  // -- bootstrap import
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
-.search-result {
-  height: 240px;
-  max-width: 1000px;
+.search-sentence{
+  padding: 30px;
+  font-size: 16px;
 }
+.search-result {
+  padding: 0px;
+  margin: 10px;
+  color: black;
+  border-color: transparent;
+  .rest-image{
+    width: 100%;
+    height: 200px;
+    margin: 0;
+    object-fit: cover;
+  }
+  .rest-item{
+    width: 100%;
+    padding: 10px;
+    margin: 5px;
+    font-family:serif;
+    .rest-name{
+      font-size: 16px;
+      margin: 0px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .hr-border{
+      margin: 0px;
+    }
+    .rest-access{
+      font-size: 12px;
+    }
+    .rest-category{
+      margin: 0px;
+      color: gray; 
+    }
+  }
+}
+th{
+  width: 140px;
+}
+td{
+  width: 600px;
+}
+

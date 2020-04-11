@@ -1,35 +1,35 @@
 <div class="index-wrapper">
   <div class="container">
-    <div class="panel-headding text-center">
-      <h1 class="">現在地取得ツール</h1>
-    </div>
-    <div class="panel-body row">
-      <button class="btn btn-primary col-md-4 col-md-offset-4" onclick="getPosition();">現在地からkmの店取得</button>
-    </div>
-    <% if @rests %>
-      <% @rests.each do |rest|%>
-        <div class="search-result row">
-          <div class="rest-image col-md-3">
-            <%= image_tag rest["image_url"]["shop_image1"],:size => '200x200' %>
+    <div class="row">
+      <p class="search-sentence">検索結果が<%= @rests.total_count%>件見つかりました</p> 
+      <% if @rests %>
+        <% @rests.each do |rest|%>
+          <%= link_to (shops_show_path(rest_id: rest["id"])) do %>
+          <div class="col-md-4">
+            <div class="search-result">
+              <%= image_tag rest["image_url"]["shop_image1"], class:"rest-image"%>
+              <div class="rest-item">
+                <p class="rest-name"><%= rest["name"] %></p>
+                <p class="rest-access"><%= rest["access"]["line"] %><%= rest["access"]["station"] %>から徒歩<%= rest["access"]["walk"] %>分</p>
+                <hr class="hr-border">
+                <p class="rest-category"><%= rest["category"] %></p>
+              </div>
+            </div>
           </div>
-          <div class="rest-item col-md-9 row">
-            <p><%= rest["name"] %></p>
-            <p><%= rest["id"] %></p>
-            <p><%= rest["address"] %></p>
-            <p><%= rest["opentime"]%></p>
-            <p><%= rest["holiday"]%></p>
-            <%= link_to '詳細を見る', shops_show_path(rest_id: rest["id"]) %>
-          </div>
+          <% end %>
+        <% end %>
+      <% else %> 
+        <div class="serch-result">
+          <p>検索結果がありません。</p>
         </div>
       <% end %>
-    <% else %> 
-      <div class="serch-result">
-        <p>検索結果がありません。</p>
-      </div>
-    <% end %>
-    <div class="paginate">
+    </div>
+    
+    <% if @rests %>
+    <div class="paginate ">
       <%= paginate @rests %>
     </div>
+    <% end %>
   </div>
 </div>
 Supported by <a href="https://api.gnavi.co.jp/api/scope/" target="_blank">ぐるなびWebService</a>
