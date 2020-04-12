@@ -7,14 +7,14 @@
           <%= link_to (shops_show_path(rest_id: rest["id"])) do %>
           <div class="col-md-4 col-xs-12">
             <div class="search-result">
-              <% if rest["image_url"]["shop_image1"] %>
-                <%= image_tag rest["image_url"]["shop_image1"],class:"rest-image" %>
+              <% if rest["image_url"]["shop_image1"].present? %> 
+                <%= image_tag rest["image_url"]["shop_image1"], class:"rest-image" %>
               <% else %>
-                <%= image_tag 'unnamed.png',class:"rest-image"%>
+                <%= image_tag '/unnamed.png', class:"rest-image" %>
               <% end %>
               <div class="rest-item">
                 <p class="rest-name"><%= rest["name"] %></p>
-                <% if rest["access"]["line"]%>
+                <% if rest["access"]["line"].present?%>
                   <p class="rest-access"><%= rest["access"]["line"] %><%= rest["access"]["station"] %>から徒歩<%= rest["access"]["walk"] %>分</p>
                 <% end %>
                 <hr class="hr-border">
@@ -25,8 +25,8 @@
           <% end %>
         <% end %>
       <% else %> 
-        <div class="serch-result">
-          <p>検索結果がありません。</p>
+        <div class="no-result text-center">
+          <p>検索結果が見つかりません。</p>
         </div>
       <% end %>
     </div>

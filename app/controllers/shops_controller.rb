@@ -20,10 +20,10 @@ class ShopsController < ApplicationController
     # あとで@lotitudeと@longitudeを変更する
     # 今の値はコーディング用
     # あとkey_id をENVにいれる
-    par = URI.encode_www_form({keyid:'4b1b65087cb2dbd19aefe508804860d6',latitude:"34.660435",
-    longitude: "135.502984", range:@range})
-    # par = URI.encode_www_form({keyid:'4b1b65087cb2dbd19aefe508804860d6',latitude: @latitude,
-    #   longitude: @longitude, range:@range})
+    # par = URI.encode_www_form({keyid:'4b1b65087cb2dbd19aefe508804860d6',latitude:"34.660435",
+    # longitude: "135.502984", range:@range})
+    par = URI.encode_www_form({keyid:'4b1b65087cb2dbd19aefe508804860d6',latitude: @latitude,
+      longitude: @longitude, range:@range})
     uri = URI.parse("https://api.gnavi.co.jp/RestSearchAPI/v3/?#{par}")
     json = Net::HTTP.get(uri)
     result = JSON.parse(json)
@@ -41,8 +41,8 @@ class ShopsController < ApplicationController
     result = JSON.parse(json)
     @rests = result['rest']
   end
-# ログオブジェクト生成
 
+# ログオブジェクト生成
 # begin
 #   responce = Net::HTTP.new(uri.host, uri.port).yield_self do |http|
 #     http.use_ssl = true
@@ -71,10 +71,6 @@ class ShopsController < ApplicationController
 #   logger.error(e.message)
 # end
   def index
-    # ショップの名前
-    # puts @rests[0]["name"]
-    # イメージ画像
-    # puts @rests[0]["image_url"]["shop_image1"]
   end
 
 end
