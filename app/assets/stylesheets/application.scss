@@ -97,6 +97,10 @@ table th,table td{
   &:hover {
     color: #fff;
   }
+
+  &:active {
+    color: #fff;
+  }
 }
 .no-result{
   margin-top: 50px;
@@ -136,9 +140,6 @@ body::before {
   h2 {
     margin-bottom: 60px;
   }
-}
-.form-control{
-  margin: 0 auto;
 }
 .panel-headding{
   margin-top: 220px;

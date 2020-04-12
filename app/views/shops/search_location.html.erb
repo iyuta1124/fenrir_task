@@ -29,13 +29,14 @@
           <p>検索結果が見つかりません。</p>
         </div>
       <% end %>
-    </div>
-    
+    </div>  
     <% if @rests %>
-    <div class="paginate ">
+    <div class="paginate">
       <%= paginate @rests %>
     </div>
     <% end %>
+    <div class="text-right">
+      <p>Supported by <a href="https://api.gnavi.co.jp/api/scope/" target="_blank">ぐるなびWebService</a></p>
+    </div>
   </div>
-  <p>Supported by <a href="https://api.gnavi.co.jp/api/scope/" target="_blank">ぐるなびWebService</a></p>
 </div>
