@@ -3,7 +3,11 @@
     <% @rests.each do |rest|%>
       <div class="search-result row">
         <div class="col-md-4">
-          <%= image_tag rest["image_url"]["shop_image1"],class: "show-rest-image js-replace-no-image" %>
+          <% if rest["image_url"]["shop_image1"] %>
+            <%= image_tag rest["image_url"]["shop_image1"],class: "show-rest-image" %>
+          <% else %>
+            <%= image_tag 'unnamed.png',class: "show-rest-image" %>
+          <% end %>
         </div>
         <div class="col-md-8">
           <h1><%= rest["name"] %></h1>

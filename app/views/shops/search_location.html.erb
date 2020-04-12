@@ -5,12 +5,18 @@
       <p class="search-sentence">検索結果が<%= @rests.total_count%>件見つかりました</p> 
         <% @rests.each do |rest|%>
           <%= link_to (shops_show_path(rest_id: rest["id"])) do %>
-          <div class="col-md-4">
+          <div class="col-md-4 col-xs-12">
             <div class="search-result">
-              <%= image_tag rest["image_url"]["shop_image1"], class:"rest-image"%>
+              <% if rest["image_url"]["shop_image1"] %>
+                <%= image_tag rest["image_url"]["shop_image1"],class:"rest-image" %>
+              <% else %>
+                <%= image_tag 'unnamed.png',class:"rest-image"%>
+              <% end %>
               <div class="rest-item">
                 <p class="rest-name"><%= rest["name"] %></p>
-                <p class="rest-access"><%= rest["access"]["line"] %><%= rest["access"]["station"] %>から徒歩<%= rest["access"]["walk"] %>分</p>
+                <% if rest["access"]["line"]%>
+                  <p class="rest-access"><%= rest["access"]["line"] %><%= rest["access"]["station"] %>から徒歩<%= rest["access"]["walk"] %>分</p>
+                <% end %>
                 <hr class="hr-border">
                 <p class="rest-category"><%= rest["category"] %></p>
               </div>
