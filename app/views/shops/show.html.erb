@@ -1,39 +1,44 @@
-<% if @rests %>
-      <% @rests.each do |rest|%>
-        <div class="search-result row">
-          <div class="rest-image col-md-3">
-            <%= image_tag rest["image_url"]["shop_image1"] %>
-          </div>
-          <table class="basic-infomation">
-            <tr>
-              <th><p>店名</p></th><td><%= rest["name"] %></td>
-            </tr>
-            <tr>
-              <th><p>電話番号</p></th><td><%= rest["tel"] %></td>
-            </tr>
-            <tr>
-              <th><p>住所</p></th><td><%= rest["address"] %></td>
-            </tr>
-            <tr>
-              <th><p>アクセス</p></th><td><%= rest["access"]["line"] %> <%= rest["access"]["station"] %>から徒歩<%= rest["access"]["walk"] %>分</td>
-            </tr>
-            <tr>
-              <th><p>営業時間</p></th><td><%= rest["opentime"]%></td>
-            </tr>
-            <tr>
-              <th><p>定休日</p></th><td><%= rest["holiday"]%></td>
-            </tr>
-          </table>
-
-
-          <div class="rest-item col-md-9 row">
- 
-          </div>
+<div class="container">
+  <% if @rests %>
+    <% @rests.each do |rest|%>
+      <div class="search-result row">
+        <div class="col-md-4">
+          <%= image_tag rest["image_url"]["shop_image1"],class: "show-rest-image js-replace-no-image" %>
         </div>
-      <% end %>
-    <% else %> 
-      <div class="serch-result">
-        <p>検索結果がみつかりません。</p>
+        <div class="col-md-8">
+          <h1><%= rest["name"] %></h1>
+          <p><%= rest["pr"]["pr_short"] %></p>
+        </div>
+
+
+        <table class="basic-infomation" >
+          <tr>
+            <th><p>店名</p></th><td><%= rest["name"] %></td>
+          </tr>
+          <tr>
+            <th><p>電話番号</p></th><td><%= rest["tel"] %></td>
+          </tr>
+          <tr>
+            <th><p>住所</p></th><td><%= rest["address"] %></td>
+          </tr>
+          <tr>
+            <th><p>アクセス</p></th><td><%= rest["access"]["line"] %> <%= rest["access"]["station"] %>から徒歩<%= rest["access"]["walk"] %>分</td>
+          </tr>
+          <tr>
+            <th><p>営業時間</p></th><td><%= rest["opentime"]%></td>
+          </tr>
+          <tr>
+            <th><p>定休日</p></th><td><%= rest["holiday"]%></td>
+          </tr>
+        </table>
+
       </div>
     <% end %>
+  <% else %> 
+    <div class="serch-result">
+      <p>検索結果がみつかりません。</p>
+    </div>
+  <% end %>
+</div>
+
     

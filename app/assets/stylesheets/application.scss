@@ -56,10 +56,31 @@
     }
   }
 }
-th{
-  width: 140px;
+table{
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  margin: 0 auto;
 }
-td{
-  width: 600px;
+table tr{
+  border-bottom: solid 1px #eee;
+}
+table th,table td{
+  text-align: center;
+  width: 25%;
+  padding: 15px 0;
+}
+table th{
+  background-color: whitesmoke;
+}
+
+.show-rest-image{
+  max-width: 400px;
+  max-height: 400px;
+  object-fit: cover;
+  margin: 0 auto;
+}
+.container{
+  font-family:serif;
 }
 

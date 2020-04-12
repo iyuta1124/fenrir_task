@@ -15,4 +15,11 @@
 // Bootstrap
 //= require bootstrap-sprockets
 //= require_tree .
-
+$(document).ready(function() {
+  $('.js-replace-no-image').error(function() {
+      $(this).attr({
+          src: '/images/unnamed.png',
+          alt: 'no image'
+      });
+  });
+});

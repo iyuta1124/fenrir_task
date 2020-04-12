@@ -1,8 +1,8 @@
 <div class="index-wrapper">
   <div class="container">
     <div class="row">
-      <p class="search-sentence">検索結果が<%= @rests.total_count%>件見つかりました</p> 
       <% if @rests %>
+      <p class="search-sentence">検索結果が<%= @rests.total_count%>件見つかりました</p> 
         <% @rests.each do |rest|%>
           <%= link_to (shops_show_path(rest_id: rest["id"])) do %>
           <div class="col-md-4">
