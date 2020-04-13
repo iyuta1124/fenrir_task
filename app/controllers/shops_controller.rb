@@ -5,6 +5,9 @@ class ShopsController < ApplicationController
   require 'json'
   require 'logger'
 
+  def index
+  end
+
   def create
     @shop = Shop.new(shop_params)
     # @shop.address = @shop.prefecture + @shop.address_city
@@ -16,14 +19,13 @@ class ShopsController < ApplicationController
     @latitude = params[:latitude]
     @longitude = params[:longitude]
     @range= params[:range]
-
     # あとで@lotitudeと@longitudeを変更する
     # 今の値はコーディング用
     # あとkey_id をENVにいれる
-    # par = URI.encode_www_form({keyid:'4b1b65087cb2dbd19aefe508804860d6',latitude:"34.660435",
-    # longitude: "135.502984", range:@range})
-    par = URI.encode_www_form({keyid:'4b1b65087cb2dbd19aefe508804860d6',latitude: @latitude,
-      longitude: @longitude, range:@range})
+    par = URI.encode_www_form({keyid:'4b1b65087cb2dbd19aefe508804860d6',latitude:"34.660435",
+    longitude: "135.502984", range:@range})
+    # par = URI.encode_www_form({keyid:'4b1b65087cb2dbd19aefe508804860d6',latitude: @latitude,
+    #   longitude: @longitude, range:@range})
     uri = URI.parse("https://api.gnavi.co.jp/RestSearchAPI/v3/?#{par}")
     json = Net::HTTP.get(uri)
     result = JSON.parse(json)
@@ -70,7 +72,4 @@ class ShopsController < ApplicationController
 # rescue => e
 #   logger.error(e.message)
 # end
-  def index
-  end
-
 end
